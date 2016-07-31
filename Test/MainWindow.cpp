@@ -17,15 +17,15 @@ public:
         varLayout->setMargin(0);
         varLayout->setSpacing(0);
         {
+            auto varLineEdit=new QLineEdit{ Plugin0Test::defaultPluginName() };
+            varLayout->addWidget(varLineEdit);
+            test_plugin_name=varLineEdit;
+        }
+        {
             auto varPushButton=new QPushButton(QString::fromUtf8(u8R"(加载插件)"));
             varLayout->addWidget(varPushButton);
             connect(varPushButton,&QPushButton::pressed,
                 this,[this]() { Plugin0Test::reload(test_plugin_name->text()); });
-        }
-        {
-            auto varLineEdit=new QLineEdit{ Plugin0Test::defaultPluginName() };
-            varLayout->addWidget(varLineEdit);
-            test_plugin_name=varLineEdit;
         }
         {
             auto varPushButton=new QPushButton(QString::fromUtf8(u8R"(测试函数)"));
