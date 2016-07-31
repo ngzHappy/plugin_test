@@ -1,11 +1,7 @@
 CONFIG += c++14
 CONFIG += console
 
-CONFIG(debug,debug|release){
-DEFINES*=_DEBUG
-}else{
-DEFINES*=NDEBUG
-}
+INCLUDEPATH+=$$PWD/../TestPluginDll
 
 QT += core gui
 QT += widgets
@@ -15,9 +11,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp \
-    Plugin0Test.cpp
+        MainWindow.cpp
 
-HEADERS  += MainWindow.hpp \
-    Plugin0Test.hpp \
-    PluginTestInterface.hpp
+HEADERS  += MainWindow.hpp
+
+include($$PWD/../PluginTest.pri)
+DESTDIR=$$DESTDIR_THE_PROJECT
+CONFIG(debug,debug|release){
+LIBS+=-L$$DESTDIR_THE_PROJECT -lTestPluginDlld
+}else{
+LIBS+=-L$$DESTDIR_THE_PROJECT -lTestPluginDll
+}

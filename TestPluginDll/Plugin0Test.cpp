@@ -58,12 +58,20 @@ std::shared_ptr<Plugin0TestInterface> import_plugin0() {
 }
 
 Plugin0Test::Plugin0Test() {
+    data_="test";
+}
 
+Plugin0Test::~Plugin0Test() {
 }
 
 void Plugin0Test::foo() {
     auto varPack=import_plugin0();
     varPack->foo();
+}
+
+void Plugin0Test::testData() {
+    auto varPack=import_plugin0();
+    varPack->testData(this);
 }
 
 QString Plugin0Test::defaultPluginName() {

@@ -2,7 +2,7 @@
 #define GENERICPLUGIN_HPP
 
 #include <QGenericPlugin>
-#include "../Test/PluginTestInterface.hpp"
+#include <PluginTestInterface.hpp>
 
 class GenericPlugin :
         public QGenericPlugin,
@@ -18,6 +18,7 @@ public:
     QObject *create(const QString &,const QString &)override;
 public:
     virtual void foo() override;
+    void testData(Plugin0Test*)override;
 };
 
 #endif // GENERICPLUGIN_HPP

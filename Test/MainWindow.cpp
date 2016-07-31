@@ -3,7 +3,7 @@
 #include <QtWidgets/qpushbutton.h>
 #include <QtWidgets/qwidget.h>
 #include <QtWidgets/qlineedit.h>
-#include "Plugin0Test.hpp"
+#include <Plugin0Test.hpp>
 
 namespace {
 
@@ -31,7 +31,10 @@ public:
             auto varPushButton=new QPushButton(QString::fromUtf8(u8R"(测试函数)"));
             varLayout->addWidget(varPushButton);
             connect(varPushButton,&QPushButton::pressed,
-                this,[this]() {test.foo(); });
+                this,[this]() {
+                test.foo();
+                test.testData();
+            });
         }
     }
 };
